@@ -1,0 +1,38 @@
+<p-table [value]="airlineList" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+    [paginator]="true" [rows]="10">
+    <ng-template pTemplate="caption">
+        List of Airlines
+        <div class="table-header">
+            <div style="text-align: right">
+                <input type="text" pInputText placeholder="Search" style="width:20%; margin-right: 10px;"
+                    [(ngModel)]="searchItem">
+                <p-button icon="pi pi-search" label="Search" (click)="onSearch(searchItem)">Search</p-button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Carriers</th>
+            <th>Cancelled</th>
+            <th>Time</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-airline>
+        <tr>
+            <td>{{airline.code}}</td>
+            <td>{{airline.airportName}}</td>
+            <td>{{airline.carriers}}</td>
+            <td>{{airline.flightsCancelled}}</td>
+            <td>{{airline.Time}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-table>
